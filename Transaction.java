@@ -1,7 +1,7 @@
 /*******************************************************************
 * Name: Aaryan Singh
-* Date: November 29, 2025
-* Assignment: SDC330 Course Project - Week 3
+* Date: December 11, 2025
+* Assignment: SDC330 Course Project - Week 4
 *
 * This class represents a Transaction. It demonstrates composition 
 * by containing a Customer and a list of ElectronicDevices, and 

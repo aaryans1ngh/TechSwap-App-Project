@@ -1,7 +1,7 @@
 /*******************************************************************
 * Name: Aaryan Singh
-* Date: November 29, 2025
-* Assignment: SDC330 Course Project - Week 3
+* Date: December 11, 2025
+* Assignment: SDC330 Course Project - Week 4
 *
 * This class represents a Smartphone. It extends ElectronicDevice 
 * to include storage capacity and implements specific valuation 
@@ -14,7 +14,10 @@ public class Smartphone extends ElectronicDevice {
     public Smartphone(String model, int ageInMonths, Condition condition, double basePrice, int storageCapacityGB) {
         super(model, ageInMonths, condition, basePrice);
         this.storageCapacityGB = storageCapacityGB;
+        this.type = "Smartphone";
     }
+
+    public int getStorageCapacityGB() { return storageCapacityGB; }
 
     @Override
     public double calculateValue() {
@@ -40,7 +43,6 @@ public class Smartphone extends ElectronicDevice {
 
     @Override
     public String toString() {
-        return String.format("%s | Storage: %dGB [Smartphone]", 
-            super.toString(), storageCapacityGB);
+        return String.format("%s | Storage: %dGB [Smartphone]", super.toString(), storageCapacityGB);
     }
 }

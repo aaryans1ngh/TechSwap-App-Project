@@ -1,7 +1,7 @@
 /*******************************************************************
 * Name: Aaryan Singh
-* Date: November 29, 2025
-* Assignment: SDC330 Course Project - Week 3
+* Date: December 11, 2025
+* Assignment: SDC330 Course Project - Week 4
 *
 * This interface defines the contract for any item that can be 
 * traded into the store. It ensures that all tradeable items have 
