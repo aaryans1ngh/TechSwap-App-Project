@@ -3,7 +3,7 @@
 * Date: December 11, 2025
 * Assignment: SDC330 Course Project - Week 4
 *
-* This class is used to connect the SQL Database.
+* This class is used for the SQL Database.
 */
 
 import java.sql.Connection;

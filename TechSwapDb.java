@@ -3,7 +3,7 @@
 * Date: December 11, 2025
 * Assignment: SDC330 Course Project - Week 4
 *
-* This class is used to handle the tables using SQL.
+* This class is used for the SQL Database.
 */
 
 import java.sql.Connection;
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class TechSwapDb {
 
     public static boolean createTables(Connection conn) {
+        // Create Customers Table
         String sqlCustomers = "CREATE TABLE IF NOT EXISTS Customers (\n"
                 + " customer_id integer PRIMARY KEY,\n"
                 + " full_name varchar(50),\n"
@@ -23,6 +24,8 @@ public class TechSwapDb {
                 + " total_sales integer\n"
                 + ");";
 
+        // Create Inventory Table
+        // Note: Added storage_gb and ram_gb to store subclass specific data
         String sqlInventory = "CREATE TABLE IF NOT EXISTS Inventory (\n"
                 + " device_id integer PRIMARY KEY,\n"
                 + " customer_id integer,\n"
@@ -79,7 +82,7 @@ public class TechSwapDb {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return null;
+        return null; // Not found
     }
 
     // --- INVENTORY OPERATIONS ---
@@ -90,17 +93,18 @@ public class TechSwapDb {
         try {
             PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, customerId);
-            pst.setString(2, device.getType());
+            pst.setString(2, device.getType()); // "Smartphone" or "Laptop"
             pst.setString(3, device.getModel());
             pst.setString(4, device.getConditionString());
-            pst.setDouble(5, device.calculateValue());
+            pst.setDouble(5, device.calculateValue()); // Calculate cost/value
             pst.setString(6, device.getStatus());
 
+            // Handle Subclass specific fields
             if (device instanceof Smartphone) {
                 pst.setInt(7, ((Smartphone) device).getStorageCapacityGB());
-                pst.setInt(8, 0);
+                pst.setInt(8, 0); // No RAM for phones in this schema
             } else if (device instanceof Laptop) {
-                pst.setInt(7, 0);
+                pst.setInt(7, 0); // No Storage param for Laptop in this schema
                 pst.setInt(8, ((Laptop) device).getRamSizeGB());
             }
 
@@ -122,8 +126,8 @@ public class TechSwapDb {
                 String type = rs.getString("type");
                 int id = rs.getInt("device_id");
                 String model = rs.getString("model");
-                int age = 0;
-                double basePrice = rs.getDouble("cost");
+                int age = 0; // DB schema didn't have age, defaulting to 0 for retrieval display
+                double basePrice = rs.getDouble("cost"); // Using stored cost as base
                 String condStr = rs.getString("condition");
                 ElectronicDevice.Condition condition = ElectronicDevice.Condition.valueOf(condStr);
                 
