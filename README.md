@@ -1,8 +1,6 @@
 # TechSwap-App-Project
 Built a custom application using Java and SQL. It serves as an interactive virtual store that buys or sells any tech product for value calculated by the device's condition and it's retail price.
 
-# TechSwap Inventory Management System
-
 ## Project Description
 TechSwap Store is a robust Java application designed to solve the problem of inconsistent trade-in pricing and manual inventory tracking for electronic resale stores. The application provides a command-line interface (CLI) for employees to register customers, generate automated price quotes for used electronics (Smartphones and Laptops), and manage the store's inventory database. By standardizing the valuation logic and persisting data using SQLite, the system ensures fair pricing for customers and reliable stock tracking for management.
 
